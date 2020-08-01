@@ -1,0 +1,17 @@
+development: &defaults
+  adapter:  postgresql
+  host:     <%= ENV['DATABASE_HOST'] %>
+  port:     <%= ENV['DATABASE_PORT'] || 5432 %>
+  database: railsk8s_development
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  pool:     5
+  timeout:  5000
+
+test:
+  <<: *defaults
+  database: railsk8s_test
+
+production:
+  <<: *defaults
+  database: railsk8s_production

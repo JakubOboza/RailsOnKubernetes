@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Creating Database"
+bundle exec rake db:create
+
+echo "Migrating Rails!"
+bundle exec rake db:migrate
+
+echo "Starting Rails!"
+bundle exec rails server -b 0.0.0.0

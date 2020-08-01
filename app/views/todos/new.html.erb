@@ -1,0 +1,14 @@
+
+
+
+<% unless @todo.errors.empty? %>
+  <div class="alert">
+   <%= @todo.errors.full_messages.join(" ") %>
+  </div>
+<% end %>
+
+<%= form_with model: @todo do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit "Create", class: "btn" %>
+<% end %>

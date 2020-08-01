@@ -1,0 +1,22 @@
+<div id="todos">
+  <div class="parent white">
+
+    <div class="box new">
+      <%= link_to "Add", new_todo_path, class: "btn" %>
+    </div>
+
+    <% @todos.each do |todo| %>
+
+      <div class="box">
+        <%= todo.title %>
+
+        <%= form_with model: todo, method: "delete" do |f| %>
+          <%= f.submit "Done!", class: "btn" %>
+        <% end %>
+
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
