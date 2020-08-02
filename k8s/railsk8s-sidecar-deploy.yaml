@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: railsk8s-sidecar-deploy
+  name: railsk8s-sidecar-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rails8ks-sidecar
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: railsk8s-sidecar
+    spec:
+      volumes:
+      - name: shared-data
+        emptyDir: {}
+      containers:
+      - image: jakuboboza/rails-on-k8s:latest
+        name: backend
+        env:
+        - name: DATABASE_HOST
+          value: example_postgres
+        - name: DATABASE_PASSWORD
+          value: postgres123
+        - name: DATABASE_USERNAME
+          value: postgres
+        - name: RAILS_ENV
+          value: production
+        volumeMounts:
+        - name: shared-data
+          mountPath: /app_shared
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "125m"
+      - image: jakuboboza/rails-on-k8s:ngx-small-latest
+        name: frontend
+        volumeMounts:
+        - name: shared-data
+          mountPath: /app_shared
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "125m"

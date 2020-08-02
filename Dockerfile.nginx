@@ -18,13 +18,10 @@ RUN gem install bundler:2.1.2
 ADD Gemfile* $APP_HOME/
 RUN bundle install --without=development,test --deployment
 
-RUN ls -alh
-
 ADD . $APP_HOME
 RUN yarn install --check-files
 
 RUN RAILS_ENV=production bundle exec rake assets:precompile
-
 
 FROM nginx:1.17.8-alpine
 

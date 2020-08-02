@@ -8,3 +8,6 @@ docker:
 	docker build -t jakuboboza/rails-on-k8s:ngx_latest -t jakuboboza/rails-on-k8s:ngx_$(GIT_COMMIT) -f Dockerfile.nginx .
 	docker push jakuboboza/rails-on-k8s:ngx_latest
 	docker push jakuboboza/rails-on-k8s:ngx_$(GIT_COMMIT)
+	docker build -t jakuboboza/rails-on-k8s:ngx-small-latest -t jakuboboza/rails-on-k8s:ngx-small_$(GIT_COMMIT) -f Dockerfile.nginx-small .
+	docker push jakuboboza/rails-on-k8s:ngx-small-latest
+	docker push jakuboboza/rails-on-k8s:ngx-small_$(GIT_COMMIT)
