@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Because we will be mounting a shared volume we need to link or copy contents of public to the mount
+ln -s /app/public /app_shared/public
+
+echo "Creating Database"
+bundle exec rake db:create
+
+echo "Migrating Rails!"
+bundle exec rake db:migrate
+
+echo "Starting Rails!"
+bundle exec rails server -b 0.0.0.0
