@@ -9,7 +9,7 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: rails8ks-ngx
+      app: railsk8s-ngx
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -21,7 +21,7 @@ spec:
         app: railsk8s-ngx
     spec:
       containers:
-      - image: jakuboboza/rails-on-k8s:ngx-latest
+      - image: jakuboboza/rails-on-k8s:ngx_latest
         name: frontend
         ports:
         - containerPort: 80

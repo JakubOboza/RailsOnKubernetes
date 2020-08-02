@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: railsk8s-app-deploy
+    app: railsk8s-app
   name: railsk8s-app-deploy
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: rails8ks-app
+      app: railsk8s-app
   strategy:
     type: RollingUpdate
     rollingUpdate:

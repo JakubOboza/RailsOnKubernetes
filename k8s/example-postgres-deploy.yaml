@@ -4,13 +4,13 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: example_postgres
-  name: example_postgres
+    app: example-postgres
+  name: example-postgres
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: example_postgres
+      app: example-postgres
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       labels:
-        app: example_postgres
+        app: example-postgres
     spec:
       containers:
       - image: postgres
