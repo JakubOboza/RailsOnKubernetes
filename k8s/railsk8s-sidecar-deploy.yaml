@@ -25,10 +25,12 @@ spec:
         emptyDir: {}
       containers:
       - image: jakuboboza/rails-on-k8s:latest
+        imagePullPolicy: Always
         name: backend
+        command: ["./bin/run_sidecar"]
         env:
         - name: DATABASE_HOST
-          value: example_postgres
+          value: example-postgres
         - name: DATABASE_PASSWORD
           value: postgres123
         - name: DATABASE_USERNAME
@@ -45,6 +47,7 @@ spec:
             memory: "128Mi"
             cpu: "125m"
       - image: jakuboboza/rails-on-k8s:ngx-small-latest
+        imagePullPolicy: Always
         name: frontend
         volumeMounts:
         - name: shared-data

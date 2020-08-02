@@ -22,10 +22,11 @@ spec:
     spec:
       containers:
       - image: jakuboboza/rails-on-k8s:latest
+        imagePullPolicy: Always
         name: app
         env:
         - name: DATABASE_HOST
-          value: example_postgres
+          value: example-postgres
         - name: DATABASE_PASSWORD
           value: postgres123
         - name: DATABASE_USERNAME

@@ -22,6 +22,7 @@ spec:
     spec:
       containers:
       - image: jakuboboza/rails-on-k8s:ngx_latest
+        imagePullPolicy: Always
         name: frontend
         ports:
         - containerPort: 80
