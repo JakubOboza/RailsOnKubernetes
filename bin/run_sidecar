@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Because we will be mounting a shared volume we need to link or copy contents of public to the mount
-ln -s /app/public /app_shared/public
+# We need to copy the public directory to the mount volume
+cp -R /app/public /app_shared/public
 
 echo "Creating Database"
 bundle exec rake db:create
